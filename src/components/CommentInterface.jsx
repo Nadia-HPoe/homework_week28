@@ -5,7 +5,6 @@ const CommentInterface = () => {
   const [textareaText, setTextareaText] = useState('');
   const [comments, setComments] = useState([]);
   const [notFilled, setNotFilled] = useState(false);
-  const [randomColor, setRandomColor] = useState(false);
 
   const addCommentHandler = () => {
     if (!textareaText == '') {
@@ -13,7 +12,6 @@ const CommentInterface = () => {
         id: Math.random(),
         value: textareaText,
       };
-      setRandomColor(!randomColor);
       setComments([...comments, newComment]);
       setTextareaText('');
     } else setNotFilled(!notFilled);
@@ -21,7 +19,7 @@ const CommentInterface = () => {
 
   return (
     <div>
-      <Comments comments={comments} randomColor={randomColor} />
+      <Comments comments={comments} />
       <input
         className={'comment__input ' + (notFilled ? 'mistake' : '')}
         placeholder="Enter your comment here ..."
